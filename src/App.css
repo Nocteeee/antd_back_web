@@ -1,0 +1,25 @@
+#components-layout-demo-side .logo {
+    height: 32px;
+    margin: 16px;
+    text-align:center;
+    color:white;
+    line-height: 32px;
+    font-size: 18px;
+}
+
+.site-layout .site-layout-background {
+    background: #fff;
+}
+.site-layout-sub-header-background{
+    position:fixed;
+    height: 64px;
+    width:100%;
+    top:0;
+    right: 0;
+    left:0;
+    padding: 0;
+    z-index:100;
+    background: #fff;
+    text-align:right;
+    border-bottom:1px solid #ededed;
+}

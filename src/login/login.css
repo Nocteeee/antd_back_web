@@ -1,0 +1,13 @@
+.loginWrap{
+    background-image: url('../assets/img/bg.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+#basic{
+    padding:30px 30px 5px;
+    box-shadow: 0px 0px 5px 0px #fff;
+    transition: linear .5s;
+}
+#basic:hover{
+    box-shadow: 0px 0px 20px 5px #fff;
+}
