@@ -14,7 +14,7 @@ const tailLayout = {
 function Login() {
     const onFinish = values => {
         console.log('Success:', values);
-        login({username:values.username,password:values.username}).then(res=>{
+        login({username:values.username,password:values.password}).then(res=>{
             console.log(res)
         })
     };
