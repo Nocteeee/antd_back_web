@@ -1,55 +1,74 @@
-import React, { useState } from 'react'
-import { Table, Button } from 'antd';
+import React, { useState, useEffect } from 'react'
+import { Table, Button , message} from 'antd';
+import { articleList, deleteArticle } from '../api/interface'
+import { Link } from 'react-router-dom';
 
 
 function ArticleList(props) {
-    const [data, setData] = useState([
-        {
-            key: 0,
-            date: '2018-02-11',
-            amount: 120,
-            type: 'income',
-            note: 'transfer',
-        }
-    ])
+    const [data, setData] = useState([])
     const [columns, setColums] = useState([
         {
-            title: 'Date',
-            dataIndex: 'date',
+            title: '标题',
+            dataIndex: 'title'
         },
         {
-            title: 'Amount',
-            dataIndex: 'amount',
+            title: '描述',
+            dataIndex: 'submit',
+            width:500
         },
         {
-            title: 'Type',
-            dataIndex: 'type',
+            title: '置顶',
+            dataIndex: 'is_top'
         },
         {
-            title: 'Note',
-            dataIndex: 'note',
+            title: '分类',
+            dataIndex: 'category_id'
         },
         {
-            title: 'Action',
-            key: 'action',
-            render: () => {
+            title: '创建时间',
+            dataIndex: 'create_time'
+        },
+        {
+            title: '修改时间',
+            dataIndex: 'modified_time'
+        },
+        {
+            title: '操作',
+            render: (row) => {
                 return (
                     <div>
-                        <Button type="primary" style={{marginRight:10}} onClick={edit}>修改</Button>
-                        <Button danger type="primary">删除</Button>
+                        <Link to={{pathname:'/add',state:{id:row.id}}}>
+                            <Button type="primary" style={{marginRight:10}}>修改</Button>
+                        </Link>
+                        <Button danger type="primary" onClick={ delete_art.bind(null,row.id) }>删除</Button>
                     </div>
                 )
             },
             width:200
         },
     ])
-    const edit = function(){
-        console.log(11)
+    function delete_art(e) {
+        deleteArticle({id:e}).then(res=>{
+            if(res.code === 200){
+                message.success('删除成功',2,()=>{
+                    getList()
+                })
+            }else{
+                message.error(res.msg)
+            }
+        })
     }
-    return (
-        <Table bordered columns={columns} dataSource={data}>
 
-        </Table>
+    const getList = function(){
+        articleList().then(res=>{
+            setData(res.data)
+        })
+    }
+    useEffect(()=>{
+        getList()
+    },[])
+    return (
+        <Table bordered columns={columns} dataSource={data} rowKey="id"/>
     )
 }
 

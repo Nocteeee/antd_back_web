@@ -12,6 +12,11 @@ axios.create({
 let request = [];
 //开始请求设置，发起拦截处理
 axios.interceptors.request.use(config => {
+    if (localStorage['token']) {
+        let timestamp = new Date().getTime();
+        config.headers['token'] = localStorage['token'];
+        config.headers['timestamp'] = timestamp;
+    }
     //得到参数中的requestname字段，用于决定下次发起请求，取消相应的  相同字段的请求
     //post和get请求方式的不同，使用三木运算处理
     let requestName = config.url;
@@ -37,9 +42,12 @@ axios.interceptors.response.use(
         const res = response.data;
 
         //这里根据后台返回来设置
-        if (res.msg === "success") {
+        if (res.message === "success") {
             return response.data;
         } else {
+            if(res.code === 401){
+                // window.location.pathname = '/login'
+            }
             return Promise.reject(res);
         }
     },
