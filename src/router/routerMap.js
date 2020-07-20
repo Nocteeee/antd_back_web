@@ -7,10 +7,10 @@ import ArticleList from '../articleList'
 import ArticleAdd from '../articleAdd'
 
 export default [
-    { path: "/login", name: "Login", component: Login },
-    { path: "/", name: "App", component: App, auth:true,children:[
-        { path: "/list", name: "ArticleList", component: ArticleList, auth:true},
-        { path: "/add", name: "ArticleAdd", component: ArticleAdd, auth:true},
+    { path: "/admin/login", name: "Login", component: Login },
+    { path: "/admin", name: "App", component: App, auth:true,children:[
+        { path: "/admin/list", name: "ArticleList", component: ArticleList, auth:true},
+        { path: "/admin/add", name: "ArticleAdd", component: ArticleAdd, auth:true},
     ]},
     
 //   { path: "/", name: "App", component: App },
