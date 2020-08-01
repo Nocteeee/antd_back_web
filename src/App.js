@@ -16,9 +16,9 @@ function App(props) {
 
   //面包屑导航
   const breadcrumbNameMap = {
-    '/admin': '主页',
-    '/admin/list': '文章列表',
-    '/admin/add': '添加文章'
+    '/': '主页',
+    '/list': '文章列表',
+    '/add': '添加文章'
   }
 
   //退出
@@ -38,14 +38,14 @@ function App(props) {
         collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className="logo">Nocte</div>
         <Menu theme="dark" defaultSelectedKeys={[routerMatchPath]} mode="inline">
-          <Menu.Item key="/admin" icon={<HomeOutlined />}>
-            <Link to="/admin">主页</Link>
+          <Menu.Item key="/" icon={<HomeOutlined />}>
+            <Link to="/">主页</Link>
           </Menu.Item>
-          <Menu.Item key="/admin/list" icon={<UnorderedListOutlined />}>
-            <Link to="/admin/list">文章列表</Link>
+          <Menu.Item key="/list" icon={<UnorderedListOutlined />}>
+            <Link to="/list">文章列表</Link>
           </Menu.Item>
-          <Menu.Item key="/admin/add" icon={<FileAddOutlined />}>
-            <Link to="/admin/add">添加文章</Link>
+          <Menu.Item key="/add" icon={<FileAddOutlined />}>
+            <Link to="/add">添加文章</Link>
           </Menu.Item>
         </Menu>
       </Sider>

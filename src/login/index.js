@@ -13,7 +13,7 @@ function Login(props) {
         login({ username: values.username, password: values.password }).then(res => {
             console.log(res)
             localStorage['token'] = res.data.token;
-            props.history.push('/admin')
+            props.history.push('/')
         }).finally(()=>{
             // setLoading(false);
         })

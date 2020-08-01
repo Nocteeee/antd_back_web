@@ -56,7 +56,7 @@ function ArticleAdd(props) {
             console.log(res)
             if(res.code === 200){
                 message.success('操作成功',2,()=>{
-                    props.history.push('/admin/list')
+                    props.history.push('/list')
                 });
             }
         })
